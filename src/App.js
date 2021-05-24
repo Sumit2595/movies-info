@@ -11,13 +11,13 @@ function App() {
     results: [],
     selected: {}
   });
-  const apiurl = "http://www.omdbapi.com/?apikey=dfe6d885";
+  const apiurl="http://www.omdbapi.com/?apikey=1b181bb4";
 
   const search = (e) => {
     if (e.key === "Enter") {
       axios(apiurl + "&s=" + state.s).then(({ data }) => {
         let results = data.Search;
-
+         console.log(results);
         setState(prevState => {
           return { ...prevState, results: results }
         })
@@ -35,9 +35,10 @@ function App() {
 
   const openPopup = id => {
     axios(apiurl + "&i=" + id).then(({ data }) => {
+      let temp=apiurl + "&i=" + id;
       let result = data;
 
-      console.log(result);
+      console.log(temp);
 
       setState(prevState => {
         return { ...prevState, selected: result }
